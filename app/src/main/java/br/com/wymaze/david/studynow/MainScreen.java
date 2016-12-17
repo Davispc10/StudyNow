@@ -1,5 +1,6 @@
 package br.com.wymaze.david.studynow;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,9 @@ public class MainScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
+
+        Intent intent = getIntent();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -20,10 +24,12 @@ public class MainScreen extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity(new Intent(MainScreen.this, CadastroRotina1.class));
+                //Intent secondActivity = new Intent(MainScreen.this, CadastroRotina1.class);
+                //startActivity(secondActivity);
+                //setContentView(R.layout.activity_cadastro_rotina1);
             }
         });
     }
-
 }
+

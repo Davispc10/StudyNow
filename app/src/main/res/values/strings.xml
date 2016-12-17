@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">StudyNow</string>
     <string name="title_activity_main_screen">MainScreen</string>
+    <string name="horario">Insira o horário de início e término da rotina</string>
 </resources>

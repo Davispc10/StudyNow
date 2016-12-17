@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_cadastro_rotina1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="br.com.wymaze.david.studynow.CadastroRotina1"
+    android:theme="@style/AppTheme"
+    tools:actionBarNavMode="@style/AppTheme">
+
+    <TextView
+        android:text="@string/horario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtRotina"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="serif"
+        android:textSize="16sp"
+        android:textColor="@android:color/background_dark" />
+
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtRotina"
+        android:layout_alignStart="@+id/txtRotina"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="163dp"
+        android:id="@+id/numberPicker" />
+
+</RelativeLayout>
