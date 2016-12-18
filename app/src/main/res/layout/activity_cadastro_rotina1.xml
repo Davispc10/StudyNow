@@ -10,7 +10,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="br.com.wymaze.david.studynow.CadastroRotina1"
-    android:theme="@style/AppTheme">
+    android:theme="@style/AppTheme"
+    android:background="@android:color/white">
     <!--tools:actionBarNavMode="@style/AppTheme"-->
 
     <TextView
@@ -49,7 +50,7 @@
         android:id="@+id/linearLayout">
 
         <Button
-            android:text="D"
+            android:text="@string/dia1"
             android:id="@+id/btn1"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_height="45dp"
@@ -58,9 +59,10 @@
             android:textSize="20sp"
             android:scaleType="fitCenter"
             android:layout_marginTop="15dp"
-            android:background="@android:color/background_light" />
+            android:background="@android:color/white" />
+
         <Button
-            android:text="D"
+            android:text="@string/dia2"
             android:id="@+id/btn2"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_height="45dp"
@@ -68,9 +70,11 @@
             android:layout_width="35dp"
             android:textSize="20sp"
             android:scaleType="fitCenter"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            android:background="@android:color/white" />
+
         <Button
-            android:text="D"
+            android:text="@string/dia3"
             android:id="@+id/btn3"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_height="45dp"
@@ -78,9 +82,11 @@
             android:layout_width="35dp"
             android:textSize="20sp"
             android:scaleType="fitCenter"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            android:background="@android:color/white" />
+
         <Button
-            android:text="D"
+            android:text="@string/dia4"
             android:id="@+id/btn4"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_height="45dp"
@@ -88,9 +94,11 @@
             android:layout_width="35dp"
             android:textSize="20sp"
             android:scaleType="fitCenter"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            android:background="@android:color/white" />
+
         <Button
-            android:text="D"
+            android:text="@string/dia5"
             android:id="@+id/btn5"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_height="45dp"
@@ -98,9 +106,10 @@
             android:layout_width="35dp"
             android:textSize="20sp"
             android:scaleType="fitCenter"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            android:background="@android:color/white" />
         <Button
-            android:text="D"
+            android:text="@string/dia6"
             android:id="@+id/btn6"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_height="45dp"
@@ -108,9 +117,10 @@
             android:layout_width="35dp"
             android:textSize="20sp"
             android:scaleType="fitCenter"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            android:background="@android:color/white" />
         <Button
-            android:text="D"
+            android:text="@string/dia7"
             android:id="@+id/btn7"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_height="45dp"
@@ -118,7 +128,8 @@
             android:layout_width="35dp"
             android:textSize="20sp"
             android:scaleType="fitCenter"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            android:background="@android:color/white" />
     </LinearLayout>
 
     <NumberPicker
@@ -158,7 +169,7 @@
         android:layout_alignStart="@+id/numberPicker2" />
 
     <TextView
-        android:text="Escolha os dias que estudará:"
+        android:text="@string/horario3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="14dp"

@@ -4,4 +4,12 @@
     <string name="horario">Insira o horário da rotina</string>
     <string name="horario1">Início:</string>
     <string name="horario2">Término:</string>
+    <string name="horario3">Escolha os dias que estudará:</string>
+    <string name="dia1">D</string>
+    <string name="dia2">S</string>
+    <string name="dia3">T</string>
+    <string name="dia4">Q</string>
+    <string name="dia5">Q</string>
+    <string name="dia6">S</string>
+    <string name="dia7">S</string>
 </resources>
