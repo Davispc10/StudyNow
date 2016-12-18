@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_cadastro_rotina1"
     android:layout_width="match_parent"
@@ -9,27 +10,172 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="br.com.wymaze.david.studynow.CadastroRotina1"
-    android:theme="@style/AppTheme"
-    tools:actionBarNavMode="@style/AppTheme">
+    android:theme="@style/AppTheme">
+    <!--tools:actionBarNavMode="@style/AppTheme"-->
 
     <TextView
         android:text="@string/horario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txtRotina"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:fontFamily="serif"
         android:textSize="16sp"
-        android:textColor="@android:color/background_dark" />
+        android:textColor="@android:color/background_dark"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <NumberPicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/numberPicker1"
+        android:minHeight="250dp"
+        android:scrollbarSize="30dp"
+        android:scrollbarStyle="outsideInset"
+        android:soundEffectsEnabled="false"
+        android:solidColor="?android:attr/panelBackground"
+        android:layout_alignBaseline="@+id/numberPicker2"
+        android:layout_alignBottom="@+id/numberPicker2"
+        android:layout_alignStart="@+id/txtRotina" />
+
+    <LinearLayout
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:layout_width="350dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout">
+
+        <Button
+            android:text="D"
+            android:id="@+id/btn1"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:layout_width="35dp"
+            android:textSize="20sp"
+            android:scaleType="fitCenter"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/background_light" />
+        <Button
+            android:text="D"
+            android:id="@+id/btn2"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:layout_width="35dp"
+            android:textSize="20sp"
+            android:scaleType="fitCenter"
+            android:layout_marginTop="15dp" />
+        <Button
+            android:text="D"
+            android:id="@+id/btn3"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:layout_width="35dp"
+            android:textSize="20sp"
+            android:scaleType="fitCenter"
+            android:layout_marginTop="15dp" />
+        <Button
+            android:text="D"
+            android:id="@+id/btn4"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:layout_width="35dp"
+            android:textSize="20sp"
+            android:scaleType="fitCenter"
+            android:layout_marginTop="15dp" />
+        <Button
+            android:text="D"
+            android:id="@+id/btn5"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:layout_width="35dp"
+            android:textSize="20sp"
+            android:scaleType="fitCenter"
+            android:layout_marginTop="15dp" />
+        <Button
+            android:text="D"
+            android:id="@+id/btn6"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:layout_width="35dp"
+            android:textSize="20sp"
+            android:scaleType="fitCenter"
+            android:layout_marginTop="15dp" />
+        <Button
+            android:text="D"
+            android:id="@+id/btn7"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:layout_width="35dp"
+            android:textSize="20sp"
+            android:scaleType="fitCenter"
+            android:layout_marginTop="15dp" />
+    </LinearLayout>
+
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/numberPicker2"
+        android:minHeight="250dp"
+        android:scrollbarSize="30dp"
+        android:scrollbarStyle="outsideInset"
+        android:soundEffectsEnabled="false"
+        android:solidColor="?android:attr/panelBackground"
         android:layout_below="@+id/txtRotina"
-        android:layout_alignStart="@+id/txtRotina"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="163dp"
-        android:id="@+id/numberPicker" />
+        android:layout_alignEnd="@+id/txtRotina"
+        android:layout_marginTop="76dp" />
+
+    <TextView
+        android:text="@string/horario1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:layout_marginTop="57dp"
+        android:layout_below="@+id/txtRotina"
+        android:layout_alignEnd="@+id/numberPicker1"
+        android:layout_marginEnd="13dp" />
+
+    <TextView
+        android:text="@string/horario2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txthoraI"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignStart="@+id/numberPicker2" />
+
+    <TextView
+        android:text="Escolha os dias que estudará:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:id="@+id/textView5"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:layout_above="@+id/linearLayout"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Avançar"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:layout_width="100dp"
+        android:id="@+id/btnNext"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/linearLayout"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored" />
 
 </RelativeLayout>
