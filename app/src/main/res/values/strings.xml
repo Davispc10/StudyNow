@@ -12,4 +12,8 @@
     <string name="dia5">Q</string>
     <string name="dia6">S</string>
     <string name="dia7">S</string>
+    <string name="materia1">Matéria</string>
+    <string name="descMateria">Insira as matérias que serão estudadas...</string>
+    <string name="Next">Avançar</string>
+    <string name="save">Salvar</string>
 </resources>

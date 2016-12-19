@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
     android:id="@+id/activity_cadastro_rotina2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,6 +9,38 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="br.com.wymaze.david.studynow.CadastroRotina2">
+    tools:context="br.com.wymaze.david.studynow.CadastroRotina2"
+    android:theme="@style/AppTheme">
 
+    <EditText
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginTop="96dp"
+        android:id="@+id/edtMateria"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:hint="Matéria 1" />
+
+    <TextView
+        android:text="@string/descMateria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"
+        android:id="@+id/textView"
+        android:textColor="@android:color/background_dark" />
+
+    <Button
+        android:text="@string/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="127dp"
+        android:id="@+id/btnSalvar"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:textColorLink="@android:color/background_light" />
 </RelativeLayout>

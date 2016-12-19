@@ -1,14 +1,14 @@
 package br.com.wymaze.david.studynow;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.Toast;
 
 public class CadastroRotina1 extends AppCompatActivity {
     int btn11 = 0, btn12 = 0, btn13 = 0, btn14 = 0, btn15 = 0, btn16 = 0, btn17 = 0;
@@ -18,26 +18,17 @@ public class CadastroRotina1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_rotina1);
 
-        final Intent intent = getIntent();
+        Intent intent = getIntent();
 
-        NumberPicker noPicker1 = (NumberPicker) findViewById(R.id.numberPicker1);
+        final NumberPicker noPicker1 = (NumberPicker) findViewById(R.id.numberPicker1);
         noPicker1.setMaxValue(24);
         noPicker1.setMinValue(1);
         noPicker1.setWrapSelectorWheel(false);
 
-        NumberPicker noPicker2 = (NumberPicker) findViewById(R.id.numberPicker2);
+        final NumberPicker noPicker2 = (NumberPicker) findViewById(R.id.numberPicker2);
         noPicker2.setMaxValue(24);
         noPicker2.setMinValue(1);
         noPicker2.setWrapSelectorWheel(false);
-
-        Button btnNext = (Button) findViewById(R.id.btnNext);
-
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(CadastroRotina1.this, CadastroRotina2.class));
-            }
-        });
 
         final Button btn1 = (Button) findViewById(R.id.btn1);
         final Button btn2 = (Button) findViewById(R.id.btn2);
@@ -46,6 +37,36 @@ public class CadastroRotina1 extends AppCompatActivity {
         final Button btn5 = (Button) findViewById(R.id.btn5);
         final Button btn6 = (Button) findViewById(R.id.btn6);
         final Button btn7 = (Button) findViewById(R.id.btn7);
+
+        Button btnNext = (Button) findViewById(R.id.btnNext);
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (noPicker1.getValue() >= noPicker2.getValue()) {
+                    Context context = getApplicationContext();
+                    CharSequence text = "A hora de início deve ser menor que a de término!";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
+                else if (btn11 == 0 && btn12 == 0 && btn13 == 0 && btn14 == 0 && btn15 == 0 && btn16 == 0 && btn17 == 0) {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Voce deve marcar pelo menos um dia para a rotina!";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
+                else {
+                    int materias;
+                    materias = noPicker2.getValue() - noPicker1.getValue();
+                    Intent intent = new Intent(CadastroRotina1.this, CadastroRotina2.class);
+                    Bundle params = new Bundle();
+                    params.putInt("materias", materias);
+                    intent.putExtras(params);
+                    startActivity(intent);
+                }
+            }
+        });
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
