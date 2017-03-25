@@ -1,4 +1,4 @@
-package br.com.wymaze.david.studynow;
+package br.com.wymaze.david.studynow.controller;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,8 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Toast;
+
+import br.com.wymaze.david.studynow.R;
 
 public class CadastroRotina1 extends AppCompatActivity {
     int btn11 = 0, btn12 = 0, btn13 = 0, btn14 = 0, btn15 = 0, btn16 = 0, btn17 = 0;
@@ -37,6 +40,7 @@ public class CadastroRotina1 extends AppCompatActivity {
         final Button btn5 = (Button) findViewById(R.id.btn5);
         final Button btn6 = (Button) findViewById(R.id.btn6);
         final Button btn7 = (Button) findViewById(R.id.btn7);
+        final EditText desc = (EditText) findViewById(R.id.editText);
 
         Button btnNext = (Button) findViewById(R.id.btnNext);
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +66,16 @@ public class CadastroRotina1 extends AppCompatActivity {
                     Intent intent = new Intent(CadastroRotina1.this, CadastroRotina2.class);
                     Bundle params = new Bundle();
                     params.putInt("materias", materias);
+                    params.putInt("h1", noPicker1.getValue());
+                    params.putInt("h2", noPicker2.getValue());
+                    params.putInt("seg", btn11);
+                    params.putInt("ter", btn12);
+                    params.putInt("qua", btn13);
+                    params.putInt("qui", btn14);
+                    params.putInt("sex", btn15);
+                    params.putInt("sab", btn16);
+                    params.putInt("dom", btn17);
+                    params.putString("descricao", desc.getText().toString());
                     intent.putExtras(params);
                     startActivity(intent);
                 }

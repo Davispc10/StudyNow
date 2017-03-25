@@ -1,9 +1,12 @@
-package br.com.wymaze.david.studynow;
+package br.com.wymaze.david.studynow.controller;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import br.com.wymaze.david.studynow.R;
+import br.com.wymaze.david.studynow.controller.MainScreen;
 
 public class SplashScreen extends AppCompatActivity implements Runnable {
 
