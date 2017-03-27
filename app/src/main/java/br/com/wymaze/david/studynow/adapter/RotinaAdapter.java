@@ -8,7 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import br.com.wymaze.david.studynow.R;
 import br.com.wymaze.david.studynow.model.Rotina;
@@ -35,7 +38,16 @@ public class RotinaAdapter extends ArrayAdapter<Rotina> {
         TextView hora = (TextView) rowView.findViewById(R.id.tvllvHora);
         TextView descricao = (TextView) rowView.findViewById(R.id.tvllvDescricao);
 
-        hora.setText((int) rotinas.get(position).getHora().getTime());
+//        Date dt1 = rotinas.get(position).getTime1();
+//        Date dt2 = rotinas.get(position).getTime2();
+
+//        if (!dt1.equals(null) || !dt2.equals(null)) {
+//            DateFormat formatter = new SimpleDateFormat("hh");
+//            String time1 = formatter.format(rotinas.get(position).getTime1().getTime());
+//            String time2 = formatter.format(rotinas.get(position).getTime2().getTime());
+//            hora.setText( time1 + " : " + time2);
+//        }
+        hora.setText( rotinas.get(position).getTime1() + " até " + rotinas.get(position).getTime2());
         descricao.setText(rotinas.get(position).getDescricao());
         return rowView;
     }

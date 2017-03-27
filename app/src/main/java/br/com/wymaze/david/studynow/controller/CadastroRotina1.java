@@ -3,6 +3,7 @@ package br.com.wymaze.david.studynow.controller;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.annotation.StringDef;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,17 +12,24 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.wymaze.david.studynow.R;
+import br.com.wymaze.david.studynow.model.Materia;
 
 public class CadastroRotina1 extends AppCompatActivity {
     int btn11 = 0, btn12 = 0, btn13 = 0, btn14 = 0, btn15 = 0, btn16 = 0, btn17 = 0;
+    Long id;
+    String descS;
+    String h1, h2;
+    Serializable materias;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_rotina1);
-
-        Intent intent = getIntent();
 
         final NumberPicker noPicker1 = (NumberPicker) findViewById(R.id.numberPicker1);
         noPicker1.setMaxValue(24);
@@ -42,6 +50,49 @@ public class CadastroRotina1 extends AppCompatActivity {
         final Button btn7 = (Button) findViewById(R.id.btn7);
         final EditText desc = (EditText) findViewById(R.id.editText);
 
+        Intent intent = getIntent();
+        Bundle args = intent.getExtras();
+        id = args.getLong("id");
+
+        if (id != 0) {
+            h1 = args.getString("h1");
+            h2 = args.getString("h2");
+            btn11 = args.getInt("seg");
+            btn12 = args.getInt("ter");
+            btn13 = args.getInt("qua");
+            btn14 = args.getInt("qui");
+            btn15 = args.getInt("sex");
+            btn16 = args.getInt("sab");
+            btn17 = args.getInt("dom");
+            //materias = args.getSerializable("materias");
+            descS = args.getString("descricao");
+
+            desc.setText(descS);
+            noPicker1.setValue(Integer.parseInt(h1));
+            noPicker2.setValue(Integer.parseInt(h2));
+            if (btn11 == 1) {
+                btn1.setBackgroundColor(Color.argb(255, 63, 81, 181));
+            }
+            if (btn12 == 1) {
+                btn2.setBackgroundColor(Color.argb(255, 63, 81, 181));
+            }
+            if (btn13 == 1) {
+                btn3.setBackgroundColor(Color.argb(255, 63, 81, 181));
+            }
+            if (btn14 == 1) {
+                btn4.setBackgroundColor(Color.argb(255, 63, 81, 181));
+            }
+            if (btn15 == 1) {
+                btn5.setBackgroundColor(Color.argb(255, 63, 81, 181));
+            }
+            if (btn16 == 1) {
+                btn6.setBackgroundColor(Color.argb(255, 63, 81, 181));
+            }
+            if (btn17 == 1) {
+                btn7.setBackgroundColor(Color.argb(255, 63, 81, 181));
+            }
+        }
+
         Button btnNext = (Button) findViewById(R.id.btnNext);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,13 +112,14 @@ public class CadastroRotina1 extends AppCompatActivity {
                     toast.show();
                 }
                 else {
-                    int materias;
-                    materias = noPicker2.getValue() - noPicker1.getValue();
+                    int qmaterias;
+                    qmaterias = noPicker2.getValue() - noPicker1.getValue();
                     Intent intent = new Intent(CadastroRotina1.this, CadastroRotina2.class);
                     Bundle params = new Bundle();
-                    params.putInt("materias", materias);
-                    params.putInt("h1", noPicker1.getValue());
-                    params.putInt("h2", noPicker2.getValue());
+                    params.putLong("id", Long.valueOf(id));
+                    params.putInt("qmaterias", qmaterias);
+                    params.putString("h1", String.valueOf(noPicker1.getValue()));
+                    params.putString("h2", String.valueOf(noPicker2.getValue()));
                     params.putInt("seg", btn11);
                     params.putInt("ter", btn12);
                     params.putInt("qua", btn13);
@@ -76,6 +128,7 @@ public class CadastroRotina1 extends AppCompatActivity {
                     params.putInt("sab", btn16);
                     params.putInt("dom", btn17);
                     params.putString("descricao", desc.getText().toString());
+                    params.putSerializable("materias", materias);
                     intent.putExtras(params);
                     startActivity(intent);
                 }

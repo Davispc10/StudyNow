@@ -2,26 +2,24 @@ package br.com.wymaze.david.studynow.model;
 
 import com.orm.SugarRecord;
 
-import java.sql.Time;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 
 /**
  * Created by davispc10 on 24/03/17.
  */
 
 public class Rotina extends SugarRecord {
-  private Date hora;
+  private String time1, time2;
   private Integer seg, ter, qua, qui, sex, sab, dom;
-  private ArrayList<String> materia;
   private String descricao;
 
     public Rotina() {
 
     }
 
-  public Rotina(Date hora, Integer seg, Integer ter, Integer qua, Integer qui, Integer sex, Integer sab, Integer dom, ArrayList<String> materia, String descricao) {
-        this.hora = hora;
+    public Rotina(String time1, String time2, Integer seg, Integer ter, Integer qua, Integer qui, Integer sex, Integer sab, Integer dom, String descricao) {
+        this.time1 = time1;
+        this.time2 = time2;
         this.seg = seg;
         this.ter = ter;
         this.qua = qua;
@@ -29,16 +27,11 @@ public class Rotina extends SugarRecord {
         this.sex = sex;
         this.sab = sab;
         this.dom = dom;
-        this.materia = materia;
         this.descricao = descricao;
-  }
-
-    public Date getHora() {
-        return hora;
     }
 
-    public void setHora(Date hora) {
-        this.hora = hora;
+    public List<Materia> getMaterias() {
+        return Materia.find(Materia.class, "id = ?", String.valueOf(getId()));
     }
 
     public Integer getSeg() {
@@ -97,19 +90,27 @@ public class Rotina extends SugarRecord {
         this.dom = dom;
     }
 
-    public ArrayList<String> getMateria() {
-        return materia;
-    }
-
-    public void setMateria(ArrayList<String> materia) {
-        this.materia = materia;
-    }
-
     public String getDescricao() {
         return descricao;
     }
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getTime1() {
+        return time1;
+    }
+
+    public void setTime1(String time1) {
+        this.time1 = time1;
+    }
+
+    public String getTime2() {
+        return time2;
+    }
+
+    public void setTime2(String time2) {
+        this.time2 = time2;
     }
 }

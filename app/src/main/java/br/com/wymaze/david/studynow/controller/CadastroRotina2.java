@@ -16,16 +16,24 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import br.com.wymaze.david.studynow.R;
+import br.com.wymaze.david.studynow.model.Materia;
 import br.com.wymaze.david.studynow.model.Rotina;
 
+import static android.R.attr.data;
+import static android.R.attr.imageButtonStyle;
+
 public class CadastroRotina2 extends AppCompatActivity {
-    int materia = 1, h1, h2;
+    int iMateria = 0, qmaterias;
+    String h1, h2;
     int btn11 = 0, btn12 = 0, btn13 = 0, btn14 = 0, btn15 = 0, btn16 = 0, btn17 = 0;
     String descricao;
-    ArrayList<String> listMaterias;
+    List<String> listMaterias2;
+    List<Materia> listMaterias;
     EditText edtMateria;
+    Long id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +42,10 @@ public class CadastroRotina2 extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle args = intent.getExtras();
-        final int materias = args.getInt("materias");
-        h1 = args.getInt("h1");
-        h2 = args.getInt("h2");
+        id = args.getLong("id");
+        qmaterias = args.getInt("qmaterias");
+        h1 = args.getString("h1");
+        h2 = args.getString("h2");
         btn11 = args.getInt("seg");
         btn12 = args.getInt("ter");
         btn13 = args.getInt("qua");
@@ -45,48 +54,98 @@ public class CadastroRotina2 extends AppCompatActivity {
         btn16 = args.getInt("sab");
         btn17 = args.getInt("dom");
         descricao = args.getString("descricao");
-        listMaterias = new ArrayList<>();
 
         final Button btnSalvar = (Button) findViewById(R.id.btnSalvar);
         edtMateria = (EditText) findViewById(R.id.edtMateria);
 
+        if (id != 0) {
+            //listMaterias = args.getStringArrayList("materias");
+            listMaterias = Materia.find(Materia.class, "rotina = ?", String.valueOf(id));
+            //listMaterias = (ArrayList<String>) args.getSerializable("materias");
+            if (listMaterias.size() > 0)
+                edtMateria.setText(listMaterias.get(iMateria).getDescricao());
+        }
+        listMaterias2 = new ArrayList<>();
+
         final String TAG = "MyActivity";
-        Log.i(TAG, "qt: " + materias);
+        Log.i(TAG, "qt: " + qmaterias);
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!edtMateria.getText().toString().isEmpty()) {
-                    if (materia < materias) {
+                    iMateria += 1;
+                    if (iMateria <= qmaterias) {
                         Context context = getApplicationContext();
-                        listMaterias.add(edtMateria.getText().toString());
-
+                        listMaterias2.add(edtMateria.getText().toString());
+                        if (id != 0 && listMaterias.size() > 0 &&  iMateria < listMaterias.size()) {
+                            edtMateria.setText(listMaterias.get(iMateria).getDescricao());
+                        }
+                        else {
+                            edtMateria.setText("");
+                            edtMateria.setHint("Matéria " + (iMateria+1));
+                        }
                         CharSequence text = "Matéria Salva";
                         int duration = Toast.LENGTH_SHORT;
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
-                        edtMateria.setText("");
-                        materia += 1;
-                        edtMateria.setHint("Matéria " + materia);
                     }
-                    else {
+                    if (iMateria == qmaterias) {
                         Context context = getApplicationContext();
+//                        DateFormat formatter = new SimpleDateFormat("hh");
+//                        try {
+//                            time1 = formatter.parse(String.valueOf(h1));
+//                            time2 = formatter.parse(String.valueOf(h2));
+//                        } catch (ParseException e) {
+//                            e.printStackTrace();
+//                        }
 
-                        Date time = null;
-                        DateFormat formatter = new SimpleDateFormat("hh");
-                        try {
-                            time = formatter.parse(String.valueOf(h1));
-                        } catch (ParseException e) {
-                            e.printStackTrace();
+                        if (id != 0) {
+                            Rotina rotina = Rotina.findById(Rotina.class, id);
+                            rotina.setTime1(h1);
+                            rotina.setTime2(h2);
+                            rotina.setSeg(btn11);
+                            rotina.setTer(btn12);
+                            rotina.setQua(btn13);
+                            rotina.setQui(btn14);
+                            rotina.setSex(btn15);
+
+                            rotina.setSab(btn16);
+                            rotina.setDom(btn17);
+                            rotina.setDescricao(descricao);
+                            rotina.save();
+
+                            for (int i = 0; i < qmaterias; i++) {
+                                if (listMaterias.size() > i) {
+                                    Materia materia = listMaterias.get(i);
+                                    materia.setDescricao(listMaterias2.get(i));
+                                    materia.save();
+                                }
+                                else {
+                                    Materia materia = new Materia(rotina.getId(), listMaterias2.get(i), rotina);
+                                    materia.save();
+                                }
+                            }
+
+                            for (int i = iMateria; i < listMaterias.size(); i++) {
+                                listMaterias.get(i).delete();
+                            }
                         }
-                        Rotina rotina = new Rotina(time, btn11, btn12, btn13, btn14, btn15, btn16, btn17, listMaterias, descricao);
-                        rotina.save();
+                        else {
+                            Rotina rotina = new Rotina(h1, h2, btn11, btn12, btn13, btn14, btn15, btn16, btn17, descricao);
+                            rotina.save();
+                            for (int i = 0; i < listMaterias2.size(); i++) {
+                                Log.i(TAG, "lista: " + listMaterias2.get(i).toString() + "id: " + rotina.getId().toString());
+                                Materia materia = new Materia(rotina.getId(), listMaterias2.get(i), rotina);
+                                materia.save();
+                            }
+                        }
 
                         Toast toast = Toast.makeText(context, "Rotina Salva!", Toast.LENGTH_SHORT);
                         toast.show();
                         startActivity(new Intent(CadastroRotina2.this, MainScreen.class));
                     }
-                    Log.i(TAG, "qt: " + materia);
+                    Log.i(TAG, "qt: " + iMateria);
                 }
                 else {
                     Context context = getApplicationContext();
