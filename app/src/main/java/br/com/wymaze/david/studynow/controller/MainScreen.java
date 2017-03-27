@@ -28,7 +28,6 @@ import br.com.wymaze.david.studynow.model.Materia;
 import br.com.wymaze.david.studynow.model.Rotina;
 
 public class MainScreen extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -9,6 +9,7 @@
         android:supportsRtl="true"
         android:name="com.orm.SugarApp">
 
+        <receiver android:name=".controller.AlarmReceiver"/>
         <meta-data
             android:name="DATABASE"
             android:value="doideraDB.db" />

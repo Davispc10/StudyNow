@@ -64,7 +64,6 @@ public class CadastroRotina1 extends AppCompatActivity {
             btn15 = args.getInt("sex");
             btn16 = args.getInt("sab");
             btn17 = args.getInt("dom");
-            //materias = args.getSerializable("materias");
             descS = args.getString("descricao");
 
             desc.setText(descS);
